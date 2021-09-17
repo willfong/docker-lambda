@@ -1,0 +1,11 @@
+{
+  "name": "docker-lambda",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+  	"docker-build": "docker build -t dockerlambda .",
+  	"docker-run": "docker run --rm -p 9000:8080 --platform linux/amd64 -v ~/.aws:/root/.aws dockerlambda",
+  	"post": "curl -XPOST 'http://localhost:9000/2015-03-31/functions/function/invocations' -d '{\"foo\":\"bar\"}' | jq" 
+  }
+}
